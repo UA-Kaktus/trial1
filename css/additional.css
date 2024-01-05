@@ -184,8 +184,14 @@ h2 {
 .description__price-value {
     font-size: 20px;
     font-weight: 700;
-    color: #191919;
+    color: #dd1e31;
     line-height: 1;
+}
+
+.description__price-value span {
+    text-decoration: line-through;
+    color: #191919;
+    font-size: 16px;
 }
 
 .description__quontity-num {
