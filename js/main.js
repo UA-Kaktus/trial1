@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const sliderWrapper = document.querySelector('[js-slider-wrapper]'),
-          sliderImages = document.querySelectorAll('[js-slider-img'),
-          sliderThumbs = document.querySelectorAll('[js-slider-thumb]');
+    const sliderWrapper = document.querySelector('[data-js="slider-wrapper"]'),
+          sliderImages = document.querySelectorAll('[data-js="slider-img"]'),
+          sliderThumbs = document.querySelectorAll('[data-js="slider-thumb"]');
 
-    const arrowLeft = document.querySelector('[js-slider-left]'),
-          arrowRight = document.querySelector('[js-slider-right]');
+    const arrowLeft = document.querySelector('[data-js="slider-left"]'),
+          arrowRight = document.querySelector('[data-js="slider-right"]');
 
     const imageWidth = window.getComputedStyle(sliderImages[0]).width.slice(0,-2)
 
@@ -69,11 +69,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let statusForSendingData = true;
 
-    validation('[js-form]');
+    validation('[data-js="form"]');
 
     function validation(parentForm) {
         const form = document.querySelector(parentForm),
-              formButton = form.querySelector('[js-form-submit]'),
+              formButton = form.querySelector('[data-js="form-submit"]'),
               formInputs = form.querySelectorAll('input:not([type="submit"])');
 
         formButton.addEventListener('click', e => {
