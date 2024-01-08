@@ -1,0 +1,9 @@
+{
+    "sliderImages": ["./resources/s-l1600.jpg", "./resources/s-l1600-2.jpeg"],
+    "name": "Dyson Airwrap",
+    "priceBefore": "509,50",
+    "priceDiscount": "100",
+    "imageInQuiz": "./resources/s-l1600-2.jpeg",
+    "imageForAnimation": "./resources/s-l1600-2r.png",
+    "imagePresent": "./resources/box/aawwxx3.png"
+}

@@ -1,64 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const sliderWrapper = document.querySelector('[data-js="slider-wrapper"]'),
-          sliderImages = document.querySelectorAll('[data-js="slider-img"]'),
-          sliderThumbs = document.querySelectorAll('[data-js="slider-thumb"]');
+    // const sliderWrapper = document.querySelector('[data-js="slider-wrapper"]'),
+    //       sliderImages = document.querySelectorAll('[data-js="slider-img"]'),
+    //       sliderThumbs = document.querySelectorAll('[data-js="slider-thumb"]');
 
-    const arrowLeft = document.querySelector('[data-js="slider-left"]'),
-          arrowRight = document.querySelector('[data-js="slider-right"]');
+    // const arrowLeft = document.querySelector('[data-js="slider-left"]'),
+    //       arrowRight = document.querySelector('[data-js="slider-right"]');
 
-    const imageWidth = window.getComputedStyle(sliderImages[0]).width.slice(0,-2)
+    // const imageWidth = window.getComputedStyle(sliderImages[0]).width.slice(0,-2)
 
-    let currentSlide = 0;
+    // let currentSlide = 0;
 
-    changeButtonDis();
+    // changeButtonDis();
 
-    sliderThumbs.forEach((el,ind) => {
-        el.addEventListener('click', () => {
-            changeCurrentSlide(ind);
-            changeButtonDis();
-        });
-    });
+    // sliderThumbs.forEach((el,ind) => {
+    //     el.addEventListener('click', () => {
+    //         changeCurrentSlide(ind);
+    //         changeButtonDis();
+    //     });
+    // });
 
-    arrowLeft.addEventListener('click', () => {
-        onArrowCLick(-1);
-        changeButtonDis();
-    });
-    arrowRight.addEventListener('click', () => {
-        onArrowCLick(1);
-        changeButtonDis();
-    });
+    // arrowLeft.addEventListener('click', () => {
+    //     onArrowCLick(-1);
+    //     changeButtonDis();
+    // });
+    // arrowRight.addEventListener('click', () => {
+    //     onArrowCLick(1);
+    //     changeButtonDis();
+    // });
 
-    function changeButtonDis() {
-        arrowLeft.disabled = false;
-        arrowRight.disabled = false;
+    // function changeButtonDis() {
+    //     arrowLeft.disabled = false;
+    //     arrowRight.disabled = false;
 
-        if (currentSlide == 0) {
-            arrowLeft.disabled = true;
-        }
-        if (currentSlide == sliderImages.length - 1) {
-            arrowRight.disabled = true;
-        }
-    }
+    //     if (currentSlide == 0) {
+    //         arrowLeft.disabled = true;
+    //     }
+    //     if (currentSlide == sliderImages.length - 1) {
+    //         arrowRight.disabled = true;
+    //     }
+    // }
 
-    function changeCurrentSlide(ind) {
-        sliderThumbs.forEach(el => {
-            el.classList.remove('slider-thumb_active');
-        });
-        sliderWrapper.style.left = `-${ind * imageWidth}px`;
+    // function changeCurrentSlide(ind) {
+    //     sliderThumbs.forEach(el => {
+    //         el.classList.remove('slider-thumb_active');
+    //     });
+    //     sliderWrapper.style.left = `-${ind * imageWidth}px`;
 
-        sliderThumbs[ind].classList.add('slider-thumb_active');
-        currentSlide = ind;
-    }
+    //     sliderThumbs[ind].classList.add('slider-thumb_active');
+    //     currentSlide = ind;
+    // }
 
-    function onArrowCLick(num) {
-        currentSlide = currentSlide + num;
-        sliderThumbs.forEach(el => {
-            el.classList.remove('slider-thumb_active');
-        });
-        sliderWrapper.style.left = `-${currentSlide * imageWidth}px`;
+    // function onArrowCLick(num) {
+    //     currentSlide = currentSlide + num;
+    //     sliderThumbs.forEach(el => {
+    //         el.classList.remove('slider-thumb_active');
+    //     });
+    //     sliderWrapper.style.left = `-${currentSlide * imageWidth}px`;
 
-        sliderThumbs[currentSlide].classList.add('slider-thumb_active');
-    }
+    //     sliderThumbs[currentSlide].classList.add('slider-thumb_active');
+    // }
 
     //валідація форми
     const validateEmail = (email) => {
@@ -117,3 +117,110 @@ document.addEventListener("DOMContentLoaded", () => {
         }));
     }
 });
+
+getData('../source.json');
+
+function getData(url) {
+    fetch(url).
+    then(response => response.json()).
+    then(data => {
+        renderPage(data);
+        initSlider();
+    });
+}
+
+function renderPage(data) {
+    if(data.sliderImages) {
+        data.sliderImages.forEach((el,ind) => {
+            const element = document.createElement('img');
+            element.src = el;
+            element.alt = 'slider image';
+            element.dataset.js = 'slider-img';
+            document.querySelector('[data-js="slider-wrapper"]').append(element);
+
+            const elementThumb = document.createElement('img');
+            elementThumb.src = el;
+            elementThumb.alt = 'thumb image';
+            ind == 0 ? elementThumb.classList.add('slider-thumb', 'slider-thumb_active') : elementThumb.classList.add('slider-thumb');
+            elementThumb.dataset.js = 'slider-thumb';
+            document.querySelector('[data-js="slider-thumbs"]').append(elementThumb);
+        });
+    }
+
+    if(data.name) {
+        document.querySelectorAll('[data-js="place-for-name"]').forEach(el => {
+            el.innerHTML = data.name;
+        });
+    }
+
+    data.priceBefore ? document.querySelector('[data-js="price-before"]').innerHTML = data.priceBefore : null;
+    data.priceDiscount ? document.querySelector('[data-js="price-discount"]').innerHTML = data.priceDiscount : null;
+    data.imageInQuiz ? document.querySelectorAll('[data-js="image-in-quiz"]').forEach(el => el.src = data.imageInQuiz) : null;
+    data.imageForAnimation ? document.querySelector('[data-js="image-for-animation"]').src = data.imageForAnimation : null;
+    data.imagePresent ? document.querySelectorAll('[data-js="present-img"]').forEach(el => el.src = data.imagePresent) : null;
+    
+}
+
+function initSlider() {
+    const sliderWrapper = document.querySelector('[data-js="slider-wrapper"]'),
+          sliderImages = document.querySelectorAll('[data-js="slider-img"]'),
+          sliderThumbs = document.querySelectorAll('[data-js="slider-thumb"]');
+
+    const arrowLeft = document.querySelector('[data-js="slider-left"]'),
+          arrowRight = document.querySelector('[data-js="slider-right"]');
+
+    const imageWidth = 298;
+
+    let currentSlide = 0;
+
+    changeButtonDis();
+
+    sliderThumbs.forEach((el,ind) => {
+        el.addEventListener('click', () => {
+            changeCurrentSlide(ind);
+            changeButtonDis();
+        });
+    });
+
+    arrowLeft.addEventListener('click', () => {
+        onArrowCLick(-1);
+        changeButtonDis();
+    });
+    arrowRight.addEventListener('click', () => {
+        onArrowCLick(1);
+        changeButtonDis();
+    });
+
+    function changeButtonDis() {
+        arrowLeft.disabled = false;
+        arrowRight.disabled = false;
+
+        if (currentSlide == 0) {
+            arrowLeft.disabled = true;
+        }
+        if (currentSlide == sliderImages.length - 1) {
+            arrowRight.disabled = true;
+        }
+    }
+
+    function changeCurrentSlide(ind) {
+        sliderThumbs.forEach(el => {
+            el.classList.remove('slider-thumb_active');
+        });
+
+        sliderWrapper.style.left = `-${ind * imageWidth}px`;
+
+        sliderThumbs[ind].classList.add('slider-thumb_active');
+        currentSlide = ind;
+    }
+
+    function onArrowCLick(num) {
+        currentSlide = currentSlide + num;
+        sliderThumbs.forEach(el => {
+            el.classList.remove('slider-thumb_active');
+        });
+        sliderWrapper.style.left = `-${currentSlide * imageWidth}px`;
+
+        sliderThumbs[currentSlide].classList.add('slider-thumb_active');
+    }
+}
