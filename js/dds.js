@@ -236,3 +236,119 @@ var boxRoot,
   num = RandomFromTo(1, 3),
   intentos = 3,
   puedo = !1;
+
+var modalOptions = { backdrop: "static", keyboard: false };
+
+localStorage.setItem("vari", 0);
+
+
+$(".dffjhjknhjuh41477jnjsfgjgbjketnh598901").click(function () {
+  if (localStorage.getItem("vari") == 0) {
+    localStorage.setItem("vari", 1);
+    $(this).css("transition", "all 1s ease-in-out");
+    $(this).css("transform", "translate(-4px,-29px)");
+    $("#fade_2").fadeIn(500);
+    $("#fade_2").removeClass("fade");
+
+
+  } else if (localStorage.getItem("vari") == 1) {
+    $(".jnjsfgjgbjketnh5989").css("transiton", "all 1s ease-in-out;")
+    $(".ljnjsfgjgbjketnh5989").css("transiton", "all 1s ease-in-out;")
+    $("#fade3").css("transiton", "all 1s ease-in-out;")
+    //setTimeout(function () {
+    $(this).css("transition", "all 1s ease-in-out");
+    $(this).css("transform", "translate(-4px,-29px)");
+
+    $(this).parents(".lastclass").find(".segr").css("transition", "all 2s ease-in-out");
+    $(this).parents(".lastclass").find(".segr").css("transform", "translate(-4px,-28px)")
+    //  },1000)
+    setTimeout(function () {
+      $(".jnjsfgjgbjketnh5989").css("display", "inline")
+
+      $(".ljnjsfgjgbjketnh5989").css("display", "inline")
+
+    }, 2000)
+    setTimeout(function () {
+      $("#fade_3").fadeIn();
+      $("#fade_3").removeClass("fade");
+    }, 2500)
+
+  }
+
+
+});
+
+
+$("#p_modal_button1").click(function () {
+  $("#fade_1").modal("hide");
+
+
+})
+$("#p_modal_button2").click(function () {
+  $("#fade_2").fadeOut(1000)
+
+
+})
+
+
+$(".dbgfuyrhwufh1").click(function () {
+
+
+  $(this).fadeOut("slow", function () {
+    $(".dbgfuyrhwufh2").fadeIn("slow")
+  })
+})
+$(".dbgfuyrhwufh2").click(function () {
+
+  $(this).fadeOut("slow", function () {
+    $(".dbgfuyrhwufh3").fadeIn("slow")
+  })
+})
+$(".dbgfuyrhwufh3").click(function () {
+  $(this).fadeOut("slow", function () {
+    $(".dbgfuyrhwufh4").fadeIn("slow")
+  })
+})
+
+$(".dbgfuyrhwufh4").click(function () {
+  $(this).fadeOut("slow", function () {
+    $("#fd2").fadeIn("slow")
+    $("#mgjs1").fadeOut("slow")
+    $("#cmjs2").fadeOut("slow")
+  })
+
+
+  setTimeout(function () {
+    $(".fd2-1").fadeIn(1000)
+  }, 1000)
+  setTimeout(function () {
+    $(".fd2-2").fadeIn(1000)
+  }, 3000)
+
+  setTimeout(function () {
+    $(".fd2-3").fadeIn(1000)
+  }, 4000)
+
+  setTimeout(function () {
+    $(".fd2-4").fadeIn(1000)
+  }, 5000)
+
+  setTimeout(function () {
+    $("#fd2").fadeOut(500);
+    $("#rwuh998986598598").fadeIn(1000);
+    $("#uehruoeu").remove();
+    $("#fade_1").modal("show");
+  }, 6000)
+})
+
+dayNames = Array
+      ("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"
+      );
+    monthNames = new Array(
+      "Enero", "Febrero", "Marzo", "Abril", "Puede", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    );
+    minutos_y = " minutos y ";
+    segundos = " segundos ";
+
+
+    var modalOptions = { backdrop: "static", keyboard: false };
